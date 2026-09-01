@@ -20,7 +20,8 @@ This project was built to demonstrate practical, real-world AWS skills — cover
 
 ## 🏗️ Architecture Diagram
 
-<img width="1195" height="681" alt="Architecture Diagram" src="https://github.com/user-attachments/assets/88e4b541-5900-4303-9767-46763886df36" />
+<img width="1195" height="681" alt="Screenshot 2026-09-01 123740" src="https://github.com/user-attachments/assets/11c87419-afdd-4480-8635-03385465da64" />
+
 
 The architecture spans **two Availability Zones**, each containing one public subnet and one private subnet. Public subnets host NAT Gateways and receive traffic from an Internet Gateway. Private subnets host the application servers, which are only reachable through the Application Load Balancer.
 
@@ -82,19 +83,23 @@ curl http://<instance-private-ip>
 
 **3. Confirmed all targets in `WebTG` were Healthy:**
 
-<img width="2113" height="1114" alt="Target Group Healthy" src="https://github.com/user-attachments/assets/c198fc98-29c2-4689-a888-d2b5556d8adf" />
+<img width="2128" height="1080" alt="Screenshot 2026-09-01 124516" src="https://github.com/user-attachments/assets/d415b4bc-c656-4677-98ac-db0fc399ce89" />
+
 
 **4. Hit the ALB's DNS name repeatedly and confirmed traffic was load-balanced:**
 
 | Request 1 — routed to server 2 | Request 2 (refreshed) — routed to server 1 |
 |:---:|:---:|
-| <img width="751" height="135" alt="Browser Test 1" src="https://github.com/user-attachments/assets/29b50be5-da8f-4f01-befc-132fe564c676" /> | <img width="753" height="133" alt="Browser Test 2" src="https://github.com/user-attachments/assets/4983aff2-e7b0-49e4-a541-449c9576acd1" /> |
+| <img width="751" height="135" alt="Screenshot 2026-09-01 130209" src="https://github.com/user-attachments/assets/cf81c338-ddce-4bbe-bf8e-16acbcae34ef" />
+ | <img width="753" height="133" alt="Screenshot 2026-09-01 130236" src="https://github.com/user-attachments/assets/9cf5e126-c686-4746-ac49-1965b4ebabae" />
+ |
 
 Refreshing the page repeatedly shows requests landing on different instances — confirming the Application Load Balancer is distributing traffic correctly.
 
 **5. Verified Auto Scaling replaced instances correctly** after terminating the originals, and new instances registered as healthy targets automatically:
 
-<img width="1281" height="256" alt="Auto Scaling Group" src="https://github.com/user-attachments/assets/b000bcf0-c9b1-45de-a9c1-52f67de9e5b6" />
+<img width="1281" height="256" alt="Screenshot 2026-09-01 130922 - Copy (2)" src="https://github.com/user-attachments/assets/629f47ef-abbd-4083-b190-1cc62bf44e14" />
+
 
 ---
 
